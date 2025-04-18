@@ -8,6 +8,17 @@ type VirtualFileSystem struct {
 	root *Katalog
 }
 
+func NewVirtualFileSystem() *VirtualFileSystem {
+	return &VirtualFileSystem{
+		root: &Katalog{
+			name:       "root",
+			items:      []FileSystemItem{},
+			createdAt:  time.Now(),
+			modifiedAt: time.Now(),
+		},
+	}
+}
+
 func (vfs *VirtualFileSystem) CreateFile(name string, content []byte) error {
 	file := &Plik{
 		name:       name,
