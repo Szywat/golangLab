@@ -5,9 +5,9 @@ import (
 )
 
 type Plik struct {
-	name string
-	content []byte
-	createdAt time.Time
+	name       string
+	content    []byte
+	createdAt  time.Time
 	modifiedAt time.Time
 }
 
@@ -23,7 +23,7 @@ func (p *Plik) Read(b []byte) (int, error) {
 }
 
 func (p *Plik) Write(b []byte) (int, error) {
-	p.content = append(p.content, b...)
+	p.content = b
 	p.modifiedAt = time.Now()
 	return len(b), nil
 }
