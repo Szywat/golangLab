@@ -12,7 +12,7 @@ type Katalog struct {
 }
 
 func (k *Katalog) Name() string          { return k.name }
-func (k *Katalog) Path() string          { return "/" + k.name }
+func (k *Katalog) Path() string          { return "/" + k.name + "/" }
 func (k *Katalog) Size() int64           { return int64(len(k.items)) }
 func (k *Katalog) CreatedAt() time.Time  { return k.createdAt }
 func (k *Katalog) ModifiedAt() time.Time { return k.modifiedAt }
@@ -43,5 +43,3 @@ func (k *Katalog) RemoveItem(name string) error {
 func (k *Katalog) Items() []FileSystemItem {
 	return k.items
 }
-
-
