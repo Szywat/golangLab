@@ -20,6 +20,9 @@ func main() {
 		fmt.Println("Error:", err)
 	}
 
+	// tworzenie symlink
+	vfs.CreateSymLink("vfsSymlink", vfsFind)
+
 	// find err
 	fmt.Println("")
 	fmt.Println("FIND ERR")
@@ -71,11 +74,11 @@ func main() {
 	} else {
 		fmt.Println("Error:", err)
 	}
-	fmt.Println("")
+
 	fmt.Println("")
 	fmt.Println("Zawartość katalogu root:") // wyświetlanie plików
 	for _, item := range vfs.root.Items() {
-		fmt.Printf("  %s\n", item.Name())
+		fmt.Println(item.Path())
 	}
 
 	fmt.Println("")
@@ -99,7 +102,19 @@ func main() {
 	fmt.Println("")
 	fmt.Println("Zawartość katalogu root:")
 	for _, item := range vfs.root.Items() {
-		fmt.Printf("  %s\n", item.Name())
+		fmt.Println(item.Path())
 	}
 
+	fmt.Println("")
+	fmt.Println("DOWIĄZANIE SYMBOLICZNE:")
+	symlinkName := vfs.root.items[2].Name()
+	symlinkPath := vfs.root.items[2].Path()
+	symlinkSize := vfs.root.items[2].Size()
+	symlinkCreatedAt := vfs.root.items[2].CreatedAt()
+	symlinkModifiedAt := vfs.root.items[2].ModifiedAt()
+	fmt.Println(symlinkName)
+	fmt.Println(symlinkPath)
+	fmt.Printf("%d bajtów\n", symlinkSize)
+	fmt.Println(symlinkCreatedAt)
+	fmt.Println(symlinkModifiedAt)
 }
