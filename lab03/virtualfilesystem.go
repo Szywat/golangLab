@@ -52,6 +52,17 @@ func (vfs *VirtualFileSystem) CreateDirectory(name string) error {
 	return vfs.root.AddItem(directory)
 }
 
+func (vfs *VirtualFileSystem) CreateSymLink(name string, file FileSystemItem) error {
+	symlink := &SymLink{
+		name:       name,
+		target:     file,
+		createdAt:  time.Now(),
+		modifiedAt: time.Now(),
+	}
+
+	return vfs.root.AddItem(symlink)
+}
+
 func (vfs *VirtualFileSystem) FindItem(name string) (FileSystemItem, error) {
 	for _, item := range vfs.root.Items() {
 		if item.Name() == name {
