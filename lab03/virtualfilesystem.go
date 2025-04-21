@@ -30,6 +30,17 @@ func (vfs *VirtualFileSystem) CreateFile(name string, content []byte) error {
 	return vfs.root.AddItem(file)
 }
 
+func (vfs *VirtualFileSystem) CreateReadFile(name string, content []byte) error {
+	file := &PlikDoOdczytu{
+		name:       name,
+		content:    content,
+		createdAt:  time.Now(),
+		modifiedAt: time.Now(),
+	}
+
+	return vfs.root.AddItem(file)
+}
+
 func (vfs *VirtualFileSystem) CreateDirectory(name string) error {
 	directory := &Katalog{
 		name:       name,
