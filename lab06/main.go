@@ -12,4 +12,8 @@ func main() {
 	}
 
 	fmt.Println(dane[0])
+
+	wynik := EMA(dane)
+
+	fmt.Println(wynik)
 }
