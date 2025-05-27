@@ -46,7 +46,7 @@ func loadDataFromCSV(filePath string) ([]structures.Data, error) {
 			continue
 		}
 
-		last, err := functions.ParseFloat32(record[1])
+		last, err := functions.ParseFloat64(record[1])
 		if err != nil {
 			fmt.Printf("Pominięto wiersz %d: błąd parsowania 'last' ('%s'): %v", i+1, record[1], err)
 			continue
@@ -58,19 +58,19 @@ func loadDataFromCSV(filePath string) ([]structures.Data, error) {
 			continue
 		}
 
-		open, err := functions.ParseFloat32(record[3])
+		open, err := functions.ParseFloat64(record[3])
 		if err != nil {
 			fmt.Printf("Pominięto wiersz %d: błąd parsowania 'open' ('%s'): %v", i+1, record[3], err)
 			continue
 		}
 
-		high, err := functions.ParseFloat32(record[4])
+		high, err := functions.ParseFloat64(record[4])
 		if err != nil {
 			fmt.Printf("Pominięto wiersz %d: błąd parsowania 'high' ('%s'): %v", i+1, record[4], err)
 			continue
 		}
 
-		low, err := functions.ParseFloat32(record[5])
+		low, err := functions.ParseFloat64(record[5])
 		if err != nil {
 			fmt.Printf("Pominięto wiersz %d: błąd parsowania 'low' ('%s'): %v", i+1, record[5], err)
 			continue
